@@ -1,17 +1,30 @@
 package com.example.notifymi;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.service.notification.NotificationListenerService;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
+
+    private TextView textView;
+    private NotificationReceiver nReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = (TextView) findViewById(R.id.textView);
+        nReceiver = new NotificationReceiver();
+        IntentFilter iFilter = new IntentFilter();
+        iFilter.addAction("com.example.notifymi.NOTIFICATION_LISTENER_EXAMPLE");
+        registerReceiver(nReceiver, iFilter);
     }
 
 
@@ -35,5 +48,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    class NotificationReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String receivedString = intent.getStringExtra("notification_event") + "\n" + textView.getText();
+            textView.setText(receivedString);
+        }
     }
 }
