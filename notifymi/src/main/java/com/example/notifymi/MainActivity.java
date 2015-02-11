@@ -1,14 +1,17 @@
 package com.example.notifymi;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.service.notification.NotificationListenerService;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -54,6 +57,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // This is the magic.
+    public void buttonClicked(View v) {
+        NotificationManager nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder nComp = new NotificationCompat.Builder(this);
+        nComp.setContentTitle("Sexy Notification");
+        nComp.setContentText("NotificationlistenerServlet Example");
+        nComp.setTicker("NotificationListenerServlet Example");
+        nComp.setSmallIcon(R.drawable.ic_launcher);
+        nComp.setAutoCancel(true);
+        nManager.notify((int)System.currentTimeMillis(), nComp.build());
     }
 
     class NotificationReceiver extends BroadcastReceiver {
