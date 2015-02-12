@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ncl" />
             <option value="$PROJECT_DIR$/notifymi" />
           </set>
         </option>

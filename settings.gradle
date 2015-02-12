@@ -1,1 +1,1 @@
-include ':notifymi'
+include ':notifymi', ':ncl'
