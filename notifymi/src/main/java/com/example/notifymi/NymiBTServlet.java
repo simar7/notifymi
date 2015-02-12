@@ -5,5 +5,13 @@ import com.bionym.ncl.*;
 /**
  * Created by simar on 2/12/2015.
  */
+
 public class NymiBTServlet {
+
+    private void initNCL() {
+
+    }
+
+
 }
+
