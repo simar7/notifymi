@@ -1,5 +1,9 @@
 package com.example.notifymi;
 
+import android.app.Activity;
+import android.os.Environment;
+import android.util.Log;
+
 import com.bionym.ncl.*;
 
 /**
@@ -7,11 +11,6 @@ import com.bionym.ncl.*;
  */
 
 public class NymiBTServlet {
-
-    private void initNCL() {
-
-    }
-
 
 }
 
